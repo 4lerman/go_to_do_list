@@ -1,11 +1,11 @@
-# .gitignore
+# .dockerignore
 
 # Binaries
 proxy_server
 
 # Project-specific
-.idea/
-.vscode/
+.idea
+.vscode
 *.log
 
 # Go specific
@@ -16,30 +16,9 @@ bin/
 # Dependency directories
 vendor/
 
+# Docker-specific
+Dockerfile
+docker-compose.yml
 
-# OS-specific
-# Windows
-Thumbs.db
-ehthumbs.db
-# Folder config file
-Desktop.ini
-# Recycle Bin used on file shares
-$RECYCLE.BIN/
-
-# macOS
-.DS_Store
-.AppleDouble
-.LSOverride
-
-# Directories potentially created on remote AFP share
-.AppleDB
-.AppleDesktop
-Network Trash Folder
-Temporary Items
-.apdisk
-
-# Linux
-.*.swp
-
-
-.env
+.git
+.gitignore
