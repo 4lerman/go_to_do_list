@@ -1,0 +1,174 @@
+basePath: /api/v1
+definitions:
+  types.CreateToDoPayload:
+    properties:
+      activeAt:
+        example: "2024-07-22T00:55:37.481555+05:00"
+        type: string
+      title:
+        example: title
+        type: string
+    required:
+    - activeAt
+    - title
+    type: object
+  types.ToDo:
+    properties:
+      activeAt:
+        type: string
+      id:
+        type: string
+      title:
+        type: string
+    type: object
+  types.UpdateToDoPayload:
+    properties:
+      activeAt:
+        example: "2024-07-22T00:55:37.481555+05:00"
+        type: string
+      title:
+        example: updated title
+        maxLength: 200
+        type: string
+    required:
+    - activeAt
+    - title
+    type: object
+host: localhost:8080
+info:
+  contact: {}
+  description: This is a sample server for a to-do list.
+  title: To-Do List API
+  version: "1.0"
+paths:
+  /todo-list/tasks:
+    get:
+      consumes:
+      - application/json
+      description: Get to-do tasks
+      parameters:
+      - description: Task status (active or done)
+        in: query
+        name: status
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/types.ToDo'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      summary: Get to-do tasks
+      tags:
+      - tasks
+    post:
+      consumes:
+      - application/json
+      description: Create a new to-do task
+      parameters:
+      - description: ToDo Task
+        in: body
+        name: task
+        required: true
+        schema:
+          $ref: '#/definitions/types.CreateToDoPayload'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      summary: Create a new to-do task
+      tags:
+      - tasks
+  /todo-list/tasks/{id}:
+    delete:
+      description: Delete a to-do task
+      parameters:
+      - description: Task ID
+        in: path
+        name: id
+        required: true
+        type: string
+      responses:
+        "204":
+          description: No Content
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "404":
+          description: Not Found
+          schema:
+            type: string
+      summary: Delete a to-do task
+      tags:
+      - tasks
+    put:
+      consumes:
+      - application/json
+      description: Update a to-do task
+      parameters:
+      - description: Task ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Updated Task
+        in: body
+        name: task
+        required: true
+        schema:
+          $ref: '#/definitions/types.UpdateToDoPayload'
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "404":
+          description: Not Found
+          schema:
+            type: string
+      summary: Update a to-do task
+      tags:
+      - tasks
+  /todo-list/tasks/{id}/done:
+    put:
+      description: Mark a to-do task as done
+      parameters:
+      - description: Task ID
+        in: path
+        name: id
+        required: true
+        type: string
+      responses:
+        "204":
+          description: No Content
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "404":
+          description: Not Found
+          schema:
+            type: string
+      summary: Mark a to-do task as done
+      tags:
+      - tasks
+swagger: "2.0"
