@@ -40,8 +40,8 @@ This project is a simple To-Do List service implemented in Go. It provides a RES
 
 2. API Endpoints:
 
-    GET /api/v1/todo-list/tasks: Retrieve tasks. Optionally filter by status (active or done).
-    POST /api/v1/todo-list/tasks: Create a new task.
-    PUT /api/v1/todo-list/tasks/{id}: Update an existing task.
-    DELETE /api/v1/todo-list/tasks/{id}: Delete a task.
-    PUT /api/v1/todo-list/tasks/{id}/done: Mark a task as done.
+- GET /api/v1/todo-list/tasks: Retrieve tasks. Optionally filter by status (active or done).
+- POST /api/v1/todo-list/tasks: Create a new task.
+- PUT /api/v1/todo-list/tasks/{id}: Update an existing task.
+- DELETE /api/v1/todo-list/tasks/{id}: Delete a task.
+- PUT /api/v1/todo-list/tasks/{id}/done: Mark a task as done.
