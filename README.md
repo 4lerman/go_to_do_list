@@ -25,7 +25,7 @@ This project is a simple To-Do List service implemented in Go. It provides a RES
 
    ```sh
    git clone <repository-url>
-   cd proxy_server
+   cd go_to_do_list
    ```
 
 2. Build and run the Docker container:
